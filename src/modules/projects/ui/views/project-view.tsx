@@ -5,6 +5,7 @@ import {
     ResizablePanel,
     ResizablePanelGroup,
 } from "@/components/ui/resizable";
+import { ErrorBoundary } from "react-error-boundary";
 import { EyeIcon, CodeIcon, CrownIcon } from "lucide-react";
 import { MessagesContainer } from "../components/messages-container";
 import { Suspense, useState } from "react";
@@ -39,16 +40,20 @@ export const ProjectView = ({ projectId }: Props) => {
                     minSize={20}
                     className="flex flex-col min-h-0"
                 >
-                    <Suspense fallback={<p>Loading project...</p>}>
-                        <ProjectHeader projectId={projectId} />
-                    </Suspense>
-                    <Suspense fallback={<p>Loading messages...</p>}>
-                        <MessagesContainer
-                            projectId={projectId}
-                            activeFragment={activeFragment}
-                            setActiveFragment={setActiveFragment}
-                        />
-                    </Suspense>
+                    <ErrorBoundary fallback={<p>Failed loading project</p>}>
+                        <Suspense fallback={<p>Loading project...</p>}>
+                            <ProjectHeader projectId={projectId} />
+                        </Suspense>
+                    </ErrorBoundary>
+                    <ErrorBoundary fallback={<p>Failed loading messages</p>}>
+                        <Suspense fallback={<p>Loading messages...</p>}>
+                            <MessagesContainer
+                                projectId={projectId}
+                                activeFragment={activeFragment}
+                                setActiveFragment={setActiveFragment}
+                            />
+                        </Suspense>
+                    </ErrorBoundary>
                 </ResizablePanel>
                 <ResizableHandle className="hover:bg-primary transition-colors" />
                 <ResizablePanel
