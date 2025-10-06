@@ -1,4 +1,4 @@
-# ⚡ AI-Powered App Builder  
+# ⚡ VIBE - AI-Powered App Builder  
 
 > Generate full-stack web applications from simple prompts using AI-powered programmable agents.  
 > Built with **Next.js 15**, **React 19**, **Tailwind v4**, **Inngest**, and **Clerk** — powered by the modern AI toolchain.
@@ -58,7 +58,7 @@ This project demonstrates a full modern AI development workflow — from prompt-
 
 ### 1. Clone the repository  
 ```bash
-git clone https://github.com/Aditya28-coder/vibe.git
+git clone https://github.com/Aditya28-coder/Vibe.git
 cd Vibe
 ```
 ## Getting Started
